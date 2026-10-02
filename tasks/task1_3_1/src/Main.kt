@@ -6,6 +6,8 @@ import com.github.ajalt.mordant.rendering.TextStyles.*
 import com.github.ajalt.mordant.terminal.Terminal
 
 fun main() {
+    
+    
     val term = Terminal(AnsiLevel.TRUECOLOR)
 
     val helloStyle = italic + underline + yellow
