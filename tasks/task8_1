@@ -1,0 +1,11 @@
+{ x: Double -> x*x }
+
+{ a: Int, b: Int -> (a < b)}
+
+How to simplify a lambda expression when used in a function
+1. remove the parameter type because its inferred
+2. remove the parameter itself
+3. move the expression to outside of parentheses
+4. remove parentheses entirely
+
+e.g. { a < b }
