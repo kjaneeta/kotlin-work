@@ -23,6 +23,10 @@ fun isValidTriangle(tri: Triangle): Boolean
 
 fun triangleArea(tri: Triangle): Double
 {
+    if (!isValidTriangle(tri))
+    {
+        throw IllegalArgumentException("Not a valid triangle!")
+    }
     val (side1, side2, side3) = tri
     val semiperimeter = (side1 + side2 + side3)/2
     val area = sqrt(semiperimeter*(semiperimeter-side1)*(semiperimeter-side2)*(semiperimeter-side3))
