@@ -16,6 +16,7 @@ fun isValidTriangle(tri: Triangle): Boolean
     }
     else
     {
+        // throw exception
         return false
     }
 }
