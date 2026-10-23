@@ -18,22 +18,22 @@ class MedianTest : FreeSpec({
 
     "Exception when size=1"
     {
-        median(listOf()) shouldBe (listOf[0])
+        median(listOf(0.0f)) shouldBe 0.0f
     }
 
     "Exception when size=2"
     {
-        median(listOf()) shouldBe ((listOf[0] + listOf[1]) /2)
+        median(listOf(0.0f, 1.0f)) shouldBe 2.0f
     }
 
     "Exception when size=3"
     {
-        median(listOf()) shouldBe (listOf[1])
+        median(listOf(0.0f, 1.0f, 2.0f)) shouldBe 0.0f
     }
 
     "Exception when size=4"
     {
-        median(listOf()) shouldBe ((listOf[1] + listOf[2]) /2)
+        median(listOf(0.0f, 1.0f, 2.0f, 3.0f)) shouldBe ((1.0f+2.0f)/2)
     }
 
 
