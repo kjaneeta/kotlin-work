@@ -1,24 +1,32 @@
 // Task 7.7.1: statistics functions
 
-fun median(floatings: List<Float>())
+fun median(floatings: List<Float>): Float
 {
-    val median = 0
-    // is the list already pre-sorted?
-    if (floatings.size % 2 == 0)
+    var median = 0.0f
+    if (floatings.size == 0)
     {
-        median = floatings[floatings.size/2]
+        throw IllegalArgumentException("Must not be empty list!")
     }
-    else
+    else 
     {
-        median = floatings[(floatings.size/2)+1]
+        
+        if (floatings.size % 2 == 0)
+        {
+            var median = floatings[floatings.size/2]
+        }
+        else
+        {
+            var median = floatings[(floatings.size/2)+1]
+        }
     }
+    return median
 }
 
-fun displayStats(floatings: List<Float>())
+fun displayStats(floatings: List<Float>)
 {
     val minimum = floatings.min()
     val maximum = floatings.max()
-    val median = floatings.median()
+    val median = median(floatings)
     val mean = floatings.average()
-    return minimum, maximum, median, mean
+    println("Minimum: $minimum, Maximum: $maximum, Median: $median, Mean: $mean")
 }
