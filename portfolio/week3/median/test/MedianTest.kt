@@ -18,7 +18,7 @@ class MedianTest : FreeSpec({
 
     "Median when size=1"
     {
-        median(listOf(0.0f)) shouldBe 0.0f
+        median(listOf(1.0f)) shouldBe 1.0f
     }
 
     "Median when size=2"
