@@ -12,7 +12,7 @@ fun median(floatings: List<Float>): Float
         
         if (floatings.size % 2 == 0)
         {
-            var median = floatings[floatings.size/2]
+            var median = (((floatings[floatings.size/2]) + (floatings[floatings.size/2] + 1)) / 2)
         }
         else
         {
