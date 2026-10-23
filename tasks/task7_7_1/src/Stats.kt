@@ -1,6 +1,6 @@
 // Task 7.7.1: statistics functions
 
-val median(floatings: List<Float>())
+fun median(floatings: List<Float>())
 {
     val median = 0
     // is the list already pre-sorted?
@@ -14,7 +14,7 @@ val median(floatings: List<Float>())
     }
 }
 
-val displayStats(floatings: List<Float>())
+fun displayStats(floatings: List<Float>())
 {
     val minimum = floatings.min()
     val maximum = floatings.max()
