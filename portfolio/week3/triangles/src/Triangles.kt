@@ -17,8 +17,8 @@ fun isValidTriangle(tri: Triangle): Boolean
     else
     {
         // throw exception
-        throw IllegalArgumentException("Not a valid triangle!")
-        // return false
+        // throw IllegalArgumentException("Not a valid triangle!")
+        eturn false
     }
 }
 
