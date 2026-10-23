@@ -3,6 +3,7 @@
 val median(floatings: List<Float>())
 {
     val median = 0
+    // is the list already pre-sorted?
     if (floatings.size % 2 == 0)
     {
         median = floatings[floatings.size/2]
@@ -13,17 +14,11 @@ val median(floatings: List<Float>())
     }
 }
 
-val minimum(floatings: List<Float>())
+val displayStats(floatings: List<Float>())
 {
-
-}
-
-val maximum(floatings: List<Float>())
-{
-
-}
-
-val mean(floatings: List<Float>())
-{
-
+    val minimum = floatings.min()
+    val maximum = floatings.max()
+    val median = floatings.median()
+    val mean = floatings.average()
+    return minimum, maximum, median, mean
 }
