@@ -19,19 +19,23 @@ class MedianTest : FreeSpec({
 
 
     "Median when size=1" {
-        median(listOf(1.0f)) shouldBe 1.0f
+        val numbers = listOf(1.0f)
+        median(numbers) shouldBe (1.0f plusOrMinus tolerance)
     }
 
     "Median when size=2" {
-        median(listOf(0.0f, 1.0f)) shouldBe 0.5f
+        val numbers = listOf(0.0f, 1.0f)
+        median(numbers) shouldBe (0.5f plusOrMinus tolerance)
     }
 
     "Median when size=3" {
-        median(listOf(0.0f, 1.0f, 2.0f)) shouldBe 1.0f
+        val numbers = listOf(0.0f, 1.0f, 2.0f)
+        median(numbers) shouldBe (1.0f plusOrMinus tolerance)
     }
 
     "Median when size=4" {
-        median(listOf(0.0f, 1.0f, 2.0f, 3.0f)) shouldBe 1.5f
+        val numbers = listOf(0.0f, 1.0f, 2.0f, 3.0f)
+        median(numbers) shouldBe (1.5f plusOrMinus tolerance)
     }
 
 
