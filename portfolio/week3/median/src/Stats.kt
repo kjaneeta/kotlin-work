@@ -1,20 +1,24 @@
 // Task 7.7.1: statistics functions
 
+
+
 fun median(floatings: List<Float>): Float {
     var median: Float
-    if (floatings.size == 0) {
+    val floats = floatings.sorted()
+    if (floats.size == 0) {
         throw IllegalArgumentException("Must not be empty list!")
     }
-    else if (floatings.size == 1) {
-        median = floatings[0]
+    else if (floats.size == 1) {
+        median = floats[0]
     }
         
-        else if ((floatings.size % 2) == 0) {
-            median = (((floatings[(floatings.size/2)-1]) + (floatings[floatings.size/2])) / 2)
+        else if ((floats.size % 2) == 0) {
+            median = (((floats[(floats.size/2)-1]) + (floats[floats.size/2])) / 2)
             
         }
+
         else {
-            median = floatings[(floatings.size/2)]
+            median = floats[(floats.size/2)]
         }
     
     println(median)
