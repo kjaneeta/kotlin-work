@@ -30,7 +30,7 @@ class ToDoList() {
         // Implement code to read To Do list from a file here
         // See data/to-do.csv for an example of the format
 
-        
+
     }
 
     fun save(filename: String) {
@@ -43,21 +43,39 @@ class ToDoList() {
 
     fun add(vararg item: ToDoItem) = item.forEach { items.add(it) }
 
+    fun isDone(i: ToDoItem): Boolean {
+        return items.itemStatus == Done
+    }
+
     fun deleteDone(): Boolean {
         // Write code here to remove items with status of Done
         // Return true if any were removed, false if none were removed
+        if (isDone) {
+            items.removeAll(done)
+            return true
+        }
+
         return false
     }
 
     fun getItems(status: ItemStatus? = null): List<ToDoItem> {
         // Write code here to return a list of items with the matching
         // status, or a list of all items if status argument is null
-        return emptyList()
+        var statusMatching: List<ToDoItem>
+        if (status == null) {
+            return items
+        }
+        else {
+            statusMatching = items.filter { it.ItemStatus == status }
+        }
+        
+        return statusMatching
     }
 
     fun getItemsDueOn(date: LocalDate): List<ToDoItem> {
         // Write code here to return a list of items
         // that are due on the specified date
-        return emptyList()
+        dueMatching = items.filter { it.dueDate == date }
+        return dueMatching
     }
 }
