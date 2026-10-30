@@ -7,19 +7,6 @@
 
 import kotlin.math.sqrt
 
-/* ```mermaid
-classDiagram
-  class Triangle {
-    sideA : Double
-    sideB : Double
-    sideC : Double
-    perimeter : Double [computed]
-    semiPerimeter : Double [computed]
-    area : Double [computed]
-    toString() String
-  }
-``` */
-
 
 
 
@@ -54,11 +41,9 @@ fun triangleArea(tri: Triangle): Double
     return area
 }
 
-class Triangle constructor(sideA: Double, sideB: Double, sideC: Double)
+data class Triangle constructor(val sideA: Double, val sideB: Double, val sideC: Double)
 {
-    val sideA = sideA
-    val sideB = sideB
-    val sideC = sideC
+    
     val tri = new Triangle<sideA, sideB, sideC>
     if (!isValidTriangle(tri))
     {
@@ -66,7 +51,11 @@ class Triangle constructor(sideA: Double, sideB: Double, sideC: Double)
     }
 
     val perimeter = sideA + sideB + sideC
-    val semiperimeter = (sideA + sideB + sideC)/2
+    val semiperimeter = perimeter/2
     val area = triangleArea(tri)
+
+    override fun toString(): String {
+        return "Triangle($sideA, $sideB, $sideC)" 
+    }
 
 }
