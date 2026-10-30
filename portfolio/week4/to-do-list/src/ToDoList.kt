@@ -32,9 +32,18 @@ class ToDoList() {
 
         val filePath = Path(filename)
 
-        filePath.forEachLine.map {
-            val (dueDate, status, description) = it.split(': ', ignoreCase = false, limit = 3)
-            ToDoItem(LocalDate.of(dueDate.trim().toLocalDate()), ItemStatus.of(status.trim().toItemStatus()), description)
+        filePath.forEachLine { line -> 
+
+            val (dueDate, status, description) = line.split(':', limit = 3)
+
+            items.add(
+                ToDoItem(
+                    LocalDate.parse(dueDate.trim()),
+                    ItemStatus.valueOf(status.trim()),
+                    description.trim()
+                )
+            )
+        
         }
 
     }

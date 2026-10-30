@@ -8,15 +8,49 @@
 import kotlin.math.sqrt
 
 
+data class Triangle constructor(val sideA: Double, val sideB: Double, val sideC: Double)
+{
 
+    init { 
+        if (!isValidTriangle())
+        {
+            throw IllegalArgumentException("Not a valid triangle!")
+        }
+    }
+    
 
-typealias Triangle = Triple<Double,Double,Double>
+    val perimeter = sideA + sideB + sideC
+    val semiPerimeter = perimeter/2
+    val area = sqrt(semiPerimeter*(semiPerimeter-sideA)*(semiPerimeter-sideB)*(semiPerimeter-sideC))
+
+    fun isValidTriangle(): Boolean 
+    {
+        // val (sideA, sideB, sideC) = tri
+        if ((sideA < sideB+sideC) && (sideB < sideA+sideC) && (sideC < sideA+sideB)) 
+        {
+            return true
+        }
+        else
+        {
+            // throw exception
+            // throw IllegalArgumentException("Not a valid triangle!")
+            return false
+        }
+    } 
+
+    override fun toString(): String {
+        return "Triangle($sideA, $sideB, $sideC)" 
+    }
+
+}
+
+// typealias Triangle = Triple<Double,Double,Double>
 
 // Add isValidTriangle() and triangleArea() functions here
-fun isValidTriangle(tri: Triangle): Boolean 
+/* fun isValidTriangle(tri: Triangle): Boolean 
 {
-    val (side1, side2, side3) = tri
-    if ((side1 < side2+side3) && (side2 < side1+side3) && (side3 < side1+side2)) 
+    val (sideA, sideB, sideC) = tri
+    if ((sideA < sideB+sideC) && (sideB < sideA+sideC) && (sideC < sideA+sideB)) 
     {
         return true
     }
@@ -26,36 +60,20 @@ fun isValidTriangle(tri: Triangle): Boolean
         // throw IllegalArgumentException("Not a valid triangle!")
         return false
     }
-}
+} */
 
-fun triangleArea(tri: Triangle): Double
+
+
+/* fun triangleArea(tri: Triangle): Double
 {
     if (!isValidTriangle(tri))
     {
         throw IllegalArgumentException("Not a valid triangle!")
     }
     
-    val (side1, side2, side3) = tri
-    val semiperimeter = (side1 + side2 + side3)/2
-    val area = sqrt(semiperimeter*(semiperimeter-side1)*(semiperimeter-side2)*(semiperimeter-side3))
+    val (sideA, sideB, sideC) = tri
+    val semiperimeter = (sideA + sideB + sideC)/2
+    val area = sqrt(semiperimeter*(semiperimeter-sideA)*(semiperimeter-sideB)*(semiperimeter-sideC))
     return area
-}
+} */
 
-data class Triangle constructor(val sideA: Double, val sideB: Double, val sideC: Double)
-{
-    
-    val tri = new Triangle<sideA, sideB, sideC>
-    if (!isValidTriangle(tri))
-    {
-        throw IllegalArgumentException("Not a valid triangle!")
-    }
-
-    val perimeter = sideA + sideB + sideC
-    val semiperimeter = perimeter/2
-    val area = triangleArea(tri)
-
-    override fun toString(): String {
-        return "Triangle($sideA, $sideB, $sideC)" 
-    }
-
-}
