@@ -10,16 +10,16 @@ class ToDoList() {
     private val items = mutableListOf<ToDoItem>()
 
     val size get() = items.size
-    val notStarted = items.filter.size { it.ItemStatus == NotStarted }
+    val notStarted get() = items.filter { it.status == ItemStatus.NotStarted }.size
     // compute no. of items with NotStarted status
 
-    val inProgress = items.filter.size { it.ItemStatus == InProgress }
+    val inProgress get() = items.filter { it.status == ItemStatus.InProgress }.size
     // compute no. of items with InProgress status
 
-    val done = items.filter.size { it.ItemStatus == Done }    
+    val done get () = items.filter { it.status == ItemStatus.Done }.size
     // compute no. of items with Done status
 
-    val overdue = items.filter.size { it.isOverdue == true } 
+    val overdue get() = items.filter { it.isOverdue() == true }.size
     // compute no. of overdue items
 
     constructor(filename: String): this() {
@@ -30,6 +30,12 @@ class ToDoList() {
         // Implement code to read To Do list from a file here
         // See data/to-do.csv for an example of the format
 
+        val filePath = Path(filename)
+
+        filePath.forEachLine.map {
+            val (dueDate, status, description) = it.split(': ', ignoreCase = false, limit = 3)
+            ToDoItem(LocalDate.of(dueDate.trim().toLocalDate()), ItemStatus.of(status.trim().toItemStatus()), description)
+        }
 
     }
 
@@ -43,15 +49,11 @@ class ToDoList() {
 
     fun add(vararg item: ToDoItem) = item.forEach { items.add(it) }
 
-    fun isDone(i: ToDoItem): Boolean {
-        return items.itemStatus == Done
-    }
-
     fun deleteDone(): Boolean {
         // Write code here to remove items with status of Done
         // Return true if any were removed, false if none were removed
-        if (isDone) {
-            items.removeAll(done)
+        if ( done > 0 ) {
+            items.removeAll { it.status == ItemStatus.Done }
             return true
         }
 
@@ -66,7 +68,7 @@ class ToDoList() {
             return items
         }
         else {
-            statusMatching = items.filter { it.ItemStatus == status }
+            statusMatching = items.filter() { it.status == status }
         }
         
         return statusMatching
@@ -75,7 +77,8 @@ class ToDoList() {
     fun getItemsDueOn(date: LocalDate): List<ToDoItem> {
         // Write code here to return a list of items
         // that are due on the specified date
-        dueMatching = items.filter { it.dueDate == date }
+        var dueMatching: List<ToDoItem>
+        dueMatching = items.filter { it.dueDate == date } 
         return dueMatching
     }
 }
